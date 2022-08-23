@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_border_for_dialog">
+
+    <TextView
+        android:id="@+id/register_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="@string/register_dialog_title"
+        android:textSize="40dp"
+        android:fontFamily="@font/bad_crunge"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/email_registration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="email"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/warningEmailRegistration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"
+
+
+        android:text="@string/warningEmail"
+        android:textSize="10sp"
+        android:textColor="@color/red"
+
+        android:visibility="gone"
+        />
+
+
+    <EditText
+        android:id="@+id/password_registration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="password"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/warningPasswordRegistration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"
+
+
+        android:text="@string/wariningPassword"
+        android:textSize="10sp"
+        android:textColor="@color/red"
+
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/goToLoginDialog"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/login"
+            android:textSize="20dp"
+            android:fontFamily="@font/bad_crunge"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/button_shape"/>
+
+        <Button
+            android:id="@+id/confirmRegistrationButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="45dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/bad_crunge"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BattleShip</string>
+
+    <!-- Hud -->
+    <string name="player_name">Player Name</string>
+    <string name="settings">Impostazioni</string>
+    <string name="home">Home</string>
+    <string name="fleet">Flotta</string>
+
+    <!-- MainMenuFragment -->
+    <string name="single_player">Giocatore Singolo</string>
+    <string name="local_game">1vs1</string>
+    <string name="online">Online</string>
+
+    <!-- FleetFragment -->
+    <string name="saveFleet">SALVA</string>
+
+    <!--Settings menu-->
+    <string name="backgroundMusic" >Musica</string>
+    <string name="sound_effects">Effetti sonori</string>
+    <string name="select_language">Seleziona Lingua</string>
+    <string name="choose_language">Cambia Lingua</string>
+    <string name="english">Inglese</string>
+    <string name="italian">Italiano</string>
+    <string name="select_flag">Seleziona Bandiera</string>
+    <string name="choose_flag">Scegli una Bandiera</string>
+    <string name="usa">USA</string>
+    <string name="italy">Italia</string>
+    <string name="australia">Australia</string>
+    <string name="brazil">Brasile</string>
+    <string name="about">About</string>
+
+    <!-- ScenarioSelection Activity -->
+    <string name="russian">Russo</string>
+    <string name="classic">Classico</string>
+    <string name="standard">Standard</string>
+
+    <!-- PreMatch Fragment -->
+    <string name="start_match">Inizia</string>
+    <string name="time_to_set_fleet">Tempo Rimanente</string>
+
+    <!-- Match Fragment -->
+    <string name="turn_of">TURNO DI:</string>
+
+    <!-- Debugging strings -->
+    <string name="popup_text"  translatable="false">Questo è un esempio</string>
+    <string name="launch_error">Inizializzazione dati fallita</string>
+
+    <!-- Altro -->
+    <string name="winner">Giocatore 1 vince</string>
+    <string name="win">VITTORIA !!!</string>
+
+
+
+</resources>

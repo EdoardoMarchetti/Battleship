@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.menuFragments.MainMenuFragment">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/background_music_switch"
+            android:layout_width="@dimen/width_settings_component"
+            android:layout_height="@dimen/height_settings_component"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:checked="true"
+            android:text="@string/backgroundMusic"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bad_crunge"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sound_effects_switch"
+            android:layout_width="@dimen/width_settings_component"
+            android:layout_height="@dimen/height_settings_component"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/background_music_switch"
+            android:layout_marginTop="20dp"
+            android:text="@string/sound_effects"
+            android:checked="true"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bad_crunge"/>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/language_ll"
+            android:layout_width="@dimen/width_settings_component"
+            android:layout_height="@dimen/height_settings_component"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/sound_effects_switch"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/Language_label"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="@string/select_language"
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/bad_crunge"
+                />
+            <ImageButton
+                android:id="@+id/language_image_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/flag_usa"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:padding="10dp"
+
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/badge_ll"
+            android:layout_width="@dimen/width_settings_component"
+            android:layout_height="@dimen/height_settings_component"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/language_ll"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/flag_label"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:text="@string/select_flag"
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/bad_crunge"
+                />
+            <ImageButton
+                android:id="@+id/flag_image_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/flag_usa"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:padding="10dp"
+
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <Button
+            android:id="@+id/about_button"
+            android:layout_width="@dimen/width_settings_component"
+            android:layout_height="@dimen/height_settings_component"
+            android:layout_below="@+id/badge_ll"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/about"
+            android:fontFamily="@font/bad_crunge"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:background="@drawable/button_shape"/>
+
+
+
+
+    </RelativeLayout>
+
+</FrameLayout>

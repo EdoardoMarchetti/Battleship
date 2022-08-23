@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_border_for_popup"
+    >
+
+    <Button
+        android:id="@+id/russian_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_shape"
+        android:text="@string/russian"
+        android:textSize="30dp"
+        android:fontFamily="@font/bad_crunge"
+        android:textColor="@color/white"
+        android:layout_margin="10dp">
+    </Button>
+
+    <Button
+        android:id="@+id/classic_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_shape"
+        android:text="@string/classic"
+        android:textSize="30dp"
+        android:fontFamily="@font/bad_crunge"
+        android:textColor="@color/white"
+        android:layout_margin="10dp">
+    </Button>
+
+    <Button
+        android:id="@+id/standard_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_shape"
+        android:text="@string/standard"
+        android:textSize="30dp"
+        android:fontFamily="@font/bad_crunge"
+        android:textColor="@color/white"
+        android:layout_margin="10dp">
+    </Button>
+
+</LinearLayout>

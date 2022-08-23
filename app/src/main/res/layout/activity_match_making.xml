@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.MatchMakingActivity"
+    android:background="@drawable/background"
+    >
+
+    <!--Badge-->
+    <include
+        layout="@layout/header"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+
+        <TextView
+            android:id="@+id/tvSendRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send request to"
+            android:textSize="25dp"
+            android:fontFamily="@font/bad_crunge"
+            android:textColor="@color/white"
+            />
+
+        <ListView
+            android:id="@+id/lv_loginUsers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+
+        <TextView
+            android:id="@+id/tvAcceptRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/accept_request_from"
+            android:textSize="25dp"
+            android:fontFamily="@font/bad_crunge"
+            android:textColor="@color/white" />
+
+        <ListView
+            android:id="@+id/lv_requestedUsers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

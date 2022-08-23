@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/background_border_for_popup"
+    >
+
+    <TextView
+        android:id="@+id/language_popup_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_flag"
+        android:gravity="center_horizontal"
+        android:textSize="45dp"
+        android:fontFamily="@font/bad_crunge"
+        android:textColor="@color/white"
+        android:layout_margin="20dp"
+        />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        >
+
+        <RadioButton
+            android:id="@+id/usa_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/usa"
+            android:textSize="35dp"
+            android:fontFamily="@font/bad_crunge"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:checked="true"
+            android:buttonTint="@color/white"/>
+
+
+        <RadioButton
+            android:id="@+id/italy_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/italy"
+            android:textSize="35dp"
+            android:fontFamily="@font/bad_crunge"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:buttonTint="@color/white"
+            />
+
+        <RadioButton
+            android:id="@+id/australia_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/australia"
+            android:textSize="35dp"
+            android:fontFamily="@font/bad_crunge"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:buttonTint="@color/white"
+            />
+
+        <RadioButton
+            android:id="@+id/brazil_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/brazil"
+            android:textSize="35dp"
+            android:fontFamily="@font/bad_crunge"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:buttonTint="@color/white"
+            />
+
+
+    </RadioGroup>
+</LinearLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl2_online"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="@dimen/battlefield_size"
+            android:layout_height="@dimen/info_match_menu_height"
+            android:layout_above="@id/letters"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/distance">
+
+            <TextView
+                android:id="@+id/timer_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/time_to_set_fleet"
+                android:gravity="center"
+                android:textSize="35dp"
+                android:fontFamily="@font/bad_crunge"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/timer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="35dp"
+                android:fontFamily="@font/bad_crunge"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+
+        <com.edomar.battleship.engines.BattleFieldEngineOnlineMatch
+            android:id="@+id/battle_field"
+            android:layout_width="@dimen/battlefield_size"
+            android:layout_height="@dimen/battlefield_size"
+            android:layout_centerInParent="true"
+            android:background="@android:color/holo_blue_bright"
+            />
+
+        <ImageView
+            android:id="@+id/letters"
+            android:layout_width="@dimen/battlefield_size"
+            android:layout_height="@dimen/block_size"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/battle_field"/>
+
+        <ImageView
+            android:id="@+id/numbers"
+            android:layout_width="@dimen/block_size"
+            android:layout_height="@dimen/battlefield_size"
+            android:layout_toStartOf="@+id/battle_field"
+            android:layout_below="@id/letters"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/turn_of_menu"
+            android:orientation="horizontal"
+            android:layout_width="@dimen/battlefield_size"
+            android:layout_height="@dimen/info_match_menu_height"
+            android:layout_below="@id/battle_field"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/distance">
+
+            <TextView
+                android:id="@+id/turn_of_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="@string/turn_of"
+                android:gravity="center"
+                android:textSize="35dp"
+                android:fontFamily="@font/bad_crunge"
+                android:textColor="#424242"
+                />
+
+            <TextView
+                android:id="@+id/turn_of_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="27dp"
+                android:fontFamily="@font/bad_crunge"
+                android:textColor="#424242"/>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+</FrameLayout>

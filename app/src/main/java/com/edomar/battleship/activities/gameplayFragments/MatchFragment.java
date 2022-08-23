@@ -1,0 +1,267 @@
+package com.edomar.battleship.activities.gameplayFragments;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.Fragment;
+
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+
+import com.edomar.battleship.R;
+import com.edomar.battleship.activities.OnFragmentInteractionListener;
+import com.edomar.battleship.engines.AbstractBattleFieldEngine;
+
+import java.util.concurrent.TimeUnit;
+
+/**
+ * Il MatchFragment è utilizzato per le partite offline (1vs1 e singleplayer)
+ */
+public class MatchFragment extends Fragment implements IFragmentForBattlefield {
+
+    //Instanza dell'activity che implementa OnFragmentInteractionListener
+    private OnFragmentInteractionListener mListener;
+
+
+    // The fragment initialization parameters
+    private static final String PLAYER_NAME = "playerName";
+    private static final String ADVERSARIAL_NAME = "adversarialName";
+    private static final String PLAYER_NUMBER = "player_number";
+    private static final String LEVEL_TO_LOAD = "scenario";
+
+    // Variabili
+    private String mPlayerName;
+    private String mAdversarialName;
+    private int mPlayerNumber;
+    private String mLevelToLoad;
+
+    /** CountDownTimer **/
+    private TextView timer;
+    private int defaultTextColor;
+    private TextView timerTextView;
+    private CountDownTimer mCounterDownTimer;
+    private long duration = TimeUnit.SECONDS.toMillis(20);
+
+    /**Instanza del motore per la gestione del campo da battaglia**/
+    private AbstractBattleFieldEngine mBattleField;
+
+
+    public MatchFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param pn giocatore che deve interagire con il fragment.
+     * @param an giocatore avversario
+     * @param n numero giocatore.
+     * @param scenarioToLoad scenario da caricare tra classic, standard, russian
+     * @return A new instance of fragment BlankFragment.
+     */
+    public static MatchFragment newInstance(String pn, String an,int n, String scenarioToLoad) {
+        MatchFragment fragment = new MatchFragment();
+        Bundle args = new Bundle();
+        args.putString(PLAYER_NAME, pn);
+        args.putString(ADVERSARIAL_NAME, an);
+        args.putInt(PLAYER_NUMBER, n);
+        args.putString(LEVEL_TO_LOAD, scenarioToLoad);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener){
+            mListener = (OnFragmentInteractionListener) context;
+
+        }else{
+            mListener = null;
+        }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mPlayerName = getArguments().getString(PLAYER_NAME);
+            mAdversarialName = getArguments().getString(ADVERSARIAL_NAME);
+            mPlayerNumber = getArguments().getInt(PLAYER_NUMBER);
+            mLevelToLoad = getArguments().getString(LEVEL_TO_LOAD).toLowerCase();
+        }
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view;
+        if(mPlayerNumber == 1){
+            view = inflater.inflate(R.layout.fragment_match, container, false);
+        }else {
+            if(mPlayerName.equals(getString(R.string.computer))){
+                //Se si è in SinglePlayer allora la seconda instanza di MatchFragment ospita la griglia del computer
+                view = inflater.inflate(R.layout.fragment_match_cpu, container, false);
+            }else {
+                //Se si è in 1vs1 allora la seconda instanza di MatchFragment ospita la griglia del secondo giocatore
+                view = inflater.inflate(R.layout.fragment_match2, container, false);
+            }
+        }
+
+        return view;
+    }
+
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
+        super.onActivityCreated(savedInstanceState);
+
+        FrameLayout fl;
+        if(mPlayerNumber == 1){
+            fl = (FrameLayout) getActivity().findViewById(R.id.fl1);
+        }else{
+            if(mPlayerName.equals(getString(R.string.computer))){
+                fl = (FrameLayout) getActivity().findViewById(R.id.fl_cpu);
+            }else {
+                fl = (FrameLayout) getActivity().findViewById(R.id.fl2);
+            }
+
+        }
+
+        //Impostazioni per il Timer
+        timer = fl.findViewById(R.id.timer);
+        defaultTextColor = timer.getCurrentTextColor();
+        timerTextView = fl.findViewById(R.id.timer_text);
+
+        //Impostazioni per il motore di gestione del campo da visualizzare
+        //TextView in cui vanno inserite le coordinate
+        ImageView letters = fl.findViewById(R.id.letters);
+        ImageView numbers = fl.findViewById(R.id.numbers);
+
+        mBattleField = fl.findViewById(R.id.battle_field);
+        mBattleField.setZOrderOnTop(true);
+        mBattleField.setFragmentReference(this);
+        mBattleField.init(mLevelToLoad, mPlayerName, mAdversarialName);
+        mBattleField.setImageViewsForCoordinates(letters, numbers);
+
+        //Impostazioni per l'etichetta che indica il turno
+        /** Turn Label **/
+        TextView mTurnLabel = fl.findViewById(R.id.turn_of_player_name);
+        mTurnLabel.setText(mPlayerName);
+
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Quando il fragment torna visibili riattiva anche il campo di battaglia e il timer
+        mBattleField.setVisibility(View.VISIBLE);
+        mBattleField.setZOrderOnTop(true);
+        mBattleField.startThread();
+        initCountDownTimer();
+        mCounterDownTimer.start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //Quando il fragment non è più visibile metti in pause il motore del campo di battaglia e cancella il timer
+        mBattleField.stopThread();
+        mBattleField.setVisibility(View.INVISIBLE);
+        mCounterDownTimer.cancel();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+
+
+    //Inizializza il Timer
+    public void initCountDownTimer(){
+        Typeface tf = ResourcesCompat.getFont(getContext(), R.font.bad_crunge);
+        mCounterDownTimer = new CountDownTimer(duration, 1000) {
+            @Override
+            public void onTick(long l) {//eseguito ad ogni "tick" di tempo
+
+                String sDuration = String.format(getResources().getConfiguration().locale,"%02d",
+                        TimeUnit.MILLISECONDS.toSeconds(l));
+
+                if(TimeUnit.MILLISECONDS.toSeconds(l) < 10){ //evidenzia le scritte se mancano meno di 10 secondi alla fine
+                    timer.setText(sDuration);
+                    timer.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 45);
+                    timer.setTextColor(Color.RED);
+
+
+                }else{
+                    timer.setText(sDuration);
+                    timer.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 35);
+                    timer.setTextColor(defaultTextColor);
+                    timerTextView.setTypeface(tf, Typeface.NORMAL);
+                }
+            }
+
+            @Override
+            public void onFinish() { //Eseguito allo scadere del tempo
+                if(mListener != null){
+                    //Se il tempo finisce indica alla GameActivity di cambiare fragment
+                    mListener.requestToChangeFragment(MatchFragment.this);
+                }
+            }
+        };
+    }
+
+
+    /**-----------------------------------------------
+     *-------IFragmentForBattlefield Methods----------
+     *----------------------------------------------*/
+    @Override
+    public void notifyHit(int row, int column, boolean result) {
+        //Quando il motore di gestione del campo indica che è stato eseguito un colpo
+        //notifica alla GameActivty che deve essere cambiato il fragment
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(mListener!=null){
+                    mListener.requestToChangeFragment(MatchFragment.this);
+                }
+
+            }
+        }, 1500); //Il ritardo permette di completare l'animazione del colpo
+    }
+
+    @Override
+    public void notifyEndGame() {
+        //Quando il motore di gestione del campo indica che tutte le navi sono state colpite
+        //indica alla GameActivity di terminare la partita
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mListener.endGame(mPlayerName);
+            }
+        }, 1500);
+    }
+}

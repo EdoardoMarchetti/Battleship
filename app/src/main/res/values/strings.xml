@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">BattleShip</string>
+
+    <!-- Hud -->
+    <string name="player_name">Player Name</string>
+    <string name="settings">Settings</string>
+    <string name="home">Home</string>
+    <string name="fleet">Fleet</string>
+
+    <!-- MainMenuFragment -->
+    <string name="single_player">Single Player</string>
+    <string name="local_game">1vs1</string>
+    <string name="online">Online</string>
+
+    <!-- FleetFregment -->
+    <string name="saveFleet">SAVE FLEET</string>
+    <string name="change_level">SCENARIO</string>
+
+
+    <!--Settings menu-->
+    <string name="backgroundMusic" translatable="false">Background Music</string>
+    <string name="sound_effects" translatable="false">Sound Effects</string>
+    <string name="select_language">Select Language</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="english">English</string>
+    <string name="italian">Italian</string>
+    <string name="select_flag">Select Flag</string>
+    <string name="choose_flag">Choose Flag</string>
+    <string name="usa">USA</string>
+    <string name="italy">Italy</string>
+    <string name="australia">Australia</string>
+    <string name="brazil">Brazil</string>
+    <string name="about">About</string>
+
+    <!-- ScenarioSelection Activity -->
+    <string name="russian">Russian</string>
+    <string name="classic">Classic</string>
+    <string name="standard">Standard</string>
+
+    <!-- PreMatch Fragment -->
+    <string name="start_match">Start</string>
+    <string name="time_to_set_fleet">Time Remaining</string>
+
+    <!-- Match Fragment -->
+    <string name="turn_of">TURN OF:</string>
+
+    <!-- Shared Preference keys -->
+    <string name="configuration_preference_key" translatable="false">configuration preference</string>
+    <string name="background_music_key" translatable="false">background_music_key</string>
+    <string name="animation_sound_key" translatable="false">animation sound</string>
+    <string name="language_key" translatable="false">language_key</string>
+    <string name="flag_key" translatable="false">flag_key</string>
+
+    <!-- Debugging strings -->
+    <string name="launch_error">Initialization data failed</string>
+    <string name="popup_text" translatable="false">This is a sample</string>
+    <string name="debugging" translatable="false">debugging</string>
+
+
+    <string name="winner">PLayer 1 win</string>
+    <string name="win">Win!!!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="level_key">level key</string>
+    <string name="game_mode_key">game mode key</string>
+    <string name="login_dialog_title">Login</string>
+    <string name="confirm">Confirm</string>
+    <string name="player_preference_key">player_preference_key</string>
+    <string name="player_name_key">player_name_key</string>
+    <string name="accept_request_from">Accept request from</string>
+    <string name="back">Back</string>
+    <string name="wariningPassword">At least 8 characters</string>
+    <string name="warningEmail">Email not valid</string>
+    <string name="register_dialog_title">PLEASE REGISTER</string>
+    <string name="sing_in">Sing In</string>
+    <string name="register">Register</string>
+    <string name="none_player_logged">NOT LOGGED</string>
+    <string name="login">LOGIN</string>
+    <string name="computer">computer</string>
+    <string name="complete">COMPLETE</string>
+    <string name="seeGrids">GRIDS</string>
+    <string name="player_nickname">player_nickname</string>
+
+
+    <string name="about_notes">
+        <font size = "20"> <b> RUSSIAN : \n</b></font> 5 ships: destroyer (3 blocks), rescue (3 blocks), patrol x3 (2 blocks)
+                                                          \n Distance : yes\n
+        <font size = "20"> <b> CLASSIC : \n</b></font> 5 ships: battleship (5 blocks), cruiser (4 blocks), destroyer (3 blocks), rescue (3 blocks), patrol (2 blocks)
+                                                        \n Distance : no\n
+        <font size = "20"> <b> STANDARD : \n</b></font> 5 ships: submarine (5 blocks), carrier (4 blocks), destroyer (3 blocks), rescue (3 blocks), patrol (2 blocks)
+                                                        \n Distance : yes\n
+    </string>
+
+
+</resources>
